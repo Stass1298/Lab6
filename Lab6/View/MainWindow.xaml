@@ -1,0 +1,39 @@
+﻿<Window x:Class="Lab6.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Lab6"
+        xmlns:vm="clr-namespace:Lab6.ViewModels"
+        mc:Ignorable="d"
+        Title="Возведение в квадрат" Height="200" Width="400">
+    <Window.DataContext>
+        <vm:MyViewModel/>
+    </Window.DataContext>
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Margin="40, 0" Grid.Row="1" Content="Результат: " ></Label>
+        <Label  Margin="120, 0" Grid.Row="1" Content="{Binding Path=Result}" ></Label>
+        <DockPanel Grid.Row="2" Margin="180,0,0,0">
+            <Button  Content="Рассчитать" Height="45" Width="100" Command="{Binding ClickCommand}"></Button>
+            <Button  Content="Сбросить" Height="45" Width="100" Command="{Binding ResetCommand}"></Button>
+        </DockPanel>
+        <ScrollBar HorizontalAlignment="Left" Margin="188,-72,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Height="174" Grid.RowSpan="2" Value="{Binding Path=ValueScroll}" Maximum="100">
+            <ScrollBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.886"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </ScrollBar.RenderTransform>
+        </ScrollBar>
+        <Label Content="{Binding ValueScroll}" HorizontalAlignment="Left" Margin="180,31,0,0" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
